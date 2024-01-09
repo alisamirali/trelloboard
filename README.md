@@ -1,59 +1,62 @@
-# [Trello Board](https://trelloboard.pages.dev/) 📌
+# 📌 Trello Board Clone
 
-A Trelloboard to help manage and visualize your project workload & progress with a simple & pretty interface (basically a trello clone).
+A Trello-inspired board designed to assist in organizing and tracking project tasks and advancements, featuring an intuitive and aesthetically pleasing interface.
 
-> Breaking Change: with the introduction of projects/boards the store state has been changed. If you were using the app previously this version will crash, **you have to clear the application local storage yourself for this version to work**.
 
-**Demo:** [https://trelloboard.pages.dev/](https://trelloboard.pages.dev/)
-
-**Screenshot (light):**
-![Light theme](https://i.ibb.co/Scq0dDb/Screenshot-from-2021-12-11-12-33-58.png)
-
-**Screenshot (dark):**
-![Dark theme](https://i.ibb.co/yRnML7k/Screenshot-from-2021-12-11-12-34-08.png)
+**Demo:** [https://trello-board-react.vercel.app](https://trello-board-react.vercel.app)
 
 ---
 
-## Features 🌟
+**Screenshot (Light Theme):**
 
-- Helps manage & visualize your project workload & progress with ease.
-- Stores your data privately in your browser's inbuilt local storage.
-- Dark mode to rescue when working in a dark environment.
-- Simple & pretty interface - just the way you'd expect.
-- 🆕 Allows multiple projects/boards to accommodate all your projects.
-- 🆕 Easily export & import all data in JSON format.
+![trello-light](https://github.com/alisamirali/trelloboard/assets/62913154/3d2f2cb7-116f-4c6f-a57a-52abb6503fd0)
 
----
 
-## Technologies used 🛠️
+**Screenshot (Dark Theme):**
 
-- [React](https://es.reactjs.org/) - Front-End JavaScript library
-- [Typescript](https://www.typescriptlang.org/) - JavaScript with syntax for types.
-- [Zustand](https://zustand-demo.pmnd.rs/) - Bear necessities for state management in React.
-- [Windi CSS](https://windicss.org/) - Next generation utility-first CSS framework
-- [Feather Icons](https://feathericons.com/) - Simply beautiful open source icons
-- [Vite](https://vitejs.dev/) - Frontend Tooling
+![trello-dark](https://github.com/alisamirali/trelloboard/assets/62913154/967c5bb7-8d75-40e6-b9c0-3ae31dfc164c)
+
 
 ---
 
-## Build yourself
+## 🌟 Features
+
+- Effortless project management and visualization
+- Private data storage in your browser
+- Dark mode for low-light environments
+- Simple and aesthetically pleasing interface
+- Support for multiple projects/boards
+- Easy export/import in JSON format
+
+---
+
+## 🛠️ Technologies used 
+
+- [React](https://es.reactjs.org) - Front-End JavaScript library
+- [Typescript](https://www.typescriptlang.org) - JavaScript with syntax for types.
+- [Zustand](https://zustand-demo.pmnd.rs) - Bear necessities for state management in React.
+- [Windi CSS](https://windicss.org) - Next generation utility-first CSS framework
+- [Feather Icons](https://feathericons.com) - Simply beautiful open source icons
+- [Vite](https://vitejs.dev) - Frontend Tooling
+
+---
+
+## How to run
 
 1. Clone this repo
 
 ```bash
-git clone https://github.com/nimone/trelloboard && cd trelloboard
+git clone https://github.com/alisamirali/trelloboard && cd trelloboard
 ```
 
-2. Install project dependecies
+2. Install project dependencies
 
 ```bash
-npm install
+npm install or npm i
 ```
 
-3. Build the project and start a local server
+3. Start a local server
 
 ```bash
-npm run build && npm run serve
+npm run dev
 ```
-
-> Or, run a development server using `npm run dev`
