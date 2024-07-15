@@ -1,45 +1,45 @@
-import { useMemo, useState } from "react"
-import { Plus } from "react-feather"
-import { DragDropContext, DropResult } from "react-beautiful-dnd"
-import Board from "./components/Board"
-import Button from "./components/Button"
-import Header from "./components/Header"
-import Task from "./components/Task"
-import TaskList from "./components/TaskList"
-import { TrelloListForm } from "./components/TrelloForm"
-import Footer from "./components/Footer"
-import clsx from "clsx"
-import useTrelloStore from "./store"
-import { AnimatePresence } from "framer-motion"
-import { getRandomImage } from "./utils/image"
+import { useMemo, useState } from "react";
+import { Plus } from "react-feather";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import Board from "./components/Board";
+import Button from "./components/Button";
+import Header from "./components/Header";
+import Task from "./components/Task";
+import TaskList from "./components/TaskList";
+import { TrelloListForm } from "./components/TrelloForm";
+import Footer from "./components/Footer";
+import clsx from "clsx";
+import useTrelloStore from "./store";
+import { AnimatePresence } from "framer-motion";
+// import { getRandomImage } from "./utils/image";
 
 function App() {
-  const [showAddListForm, setShowAddListForm] = useState(false)
-  const lists = useTrelloStore((state) => state.lists[state.currentProject])
-  const tasks = useTrelloStore((state) => state.tasks)
-  const shiftTask = useTrelloStore((state) => state.shiftTask)
-  const darkMode = useTrelloStore((state) => state.darkMode)
+  const [showAddListForm, setShowAddListForm] = useState(false);
+  const lists = useTrelloStore((state) => state.lists[state.currentProject]);
+  const tasks = useTrelloStore((state) => state.tasks);
+  const shiftTask = useTrelloStore((state) => state.shiftTask);
+  const darkMode = useTrelloStore((state) => state.darkMode);
 
-  const randImg = useMemo(
-    () => getRandomImage({ seeds: ["wallpaper", "nature", "abstract"] }),
-    []
-  )
+  // const randImg = useMemo(
+  //   () => getRandomImage({ seeds: ["wallpaper", "nature", "abstract"] }),
+  //   []
+  // );
 
   const handleTaskDrag = ({ destination, source }: DropResult): void => {
-    if (!destination) return
+    if (!destination) return;
     if (
       destination.index === source.index &&
       destination.droppableId === source.droppableId
     )
-      return
+      return;
 
     shiftTask(
       source.droppableId,
       destination.droppableId,
       source.index,
       destination.index
-    )
-  }
+    );
+  };
 
   return (
     <div
@@ -48,7 +48,7 @@ function App() {
         darkMode && "dark"
       )}
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${randImg})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
       }}
     >
       <Header title="Trello Board" />
@@ -89,7 +89,7 @@ function App() {
       </DragDropContext>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

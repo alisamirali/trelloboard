@@ -1,20 +1,20 @@
-import clsx from "clsx"
-import { AnimatePresence, motion } from "framer-motion"
-import React, { useEffect, useState } from "react"
-import useClickOutside from "../hooks/useClickOutside"
+import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import useClickOutside from "../hooks/useClickOutside";
 
 interface IDropDownProps {
-  trigger: (handleClick: () => void) => React.ReactNode
-  children: React.ReactNode
-  className?: string
-  onOpen?: () => void
-  onClose?: () => void
+  trigger: (handleClick: () => void) => React.ReactNode;
+  children: React.ReactNode;
+  className?: string;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
 interface IDropDownItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
-  children: React.ReactNode
-  disabled?: boolean
-  className?: string
+  children: React.ReactNode;
+  disabled?: boolean;
+  className?: string;
 }
 
 const variants = {
@@ -29,7 +29,7 @@ const variants = {
     width: "auto",
     y: 0,
   },
-}
+};
 
 function Dropdown({
   trigger,
@@ -38,12 +38,12 @@ function Dropdown({
   onOpen,
   onClose,
 }: IDropDownProps) {
-  const [show, setShow] = useState(false)
-  const dropdownRef = useClickOutside(() => setShow(false))
+  const [show, setShow] = useState(false);
+  const dropdownRef = useClickOutside(() => setShow(false));
 
   useEffect(() => {
-    show ? onOpen?.() : onClose?.()
-  }, [show])
+    show ? onOpen?.() : onClose?.();
+  }, [show]);
 
   return (
     <div ref={dropdownRef}>
@@ -56,7 +56,7 @@ function Dropdown({
             animate="visible"
             exit="hidden"
             className={clsx(
-              "absolute top-0 min-w-44 z-10 py-0.5",
+              "absolute top-0 right-[1rem] min-w-44 z-10 py-0.5",
               "bg-gray-100/80 text-base",
               "backdrop-filter backdrop-blur",
               "rounded shadow-lg list-none",
@@ -72,7 +72,7 @@ function Dropdown({
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }
 
 export function DropdownItem({
@@ -99,7 +99,7 @@ export function DropdownItem({
     >
       {children}
     </li>
-  )
+  );
 }
 
-export default Dropdown
+export default Dropdown;

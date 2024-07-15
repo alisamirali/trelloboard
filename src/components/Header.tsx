@@ -1,55 +1,55 @@
-import { useRef, useState } from "react"
-import { Check, Download, Menu, Moon, Sun, Upload, X } from "react-feather"
-import useTrelloStore, { TrelloState } from "../store"
-import Button from "./Button"
-import Dropdown, { DropdownItem } from "./Dropdown"
-import Modal from "./Modal"
-import ProjectSelector from "./ProjectSelector"
+import { useRef, useState } from "react";
+import { Check, Download, Menu, Moon, Sun, Upload, X } from "react-feather";
+import useTrelloStore, { TrelloState } from "../store";
+import Button from "./Button";
+import Dropdown, { DropdownItem } from "./Dropdown";
+import Modal from "./Modal";
+import ProjectSelector from "./ProjectSelector";
 
 interface IProps {
-  title: string
+  title: string;
 }
 
 function Header({ title }: IProps) {
-  const [showImportConfirmModal, setShowImportConfirmModal] = useState(false)
+  const [showImportConfirmModal, setShowImportConfirmModal] = useState(false);
 
-  const jsonFileInputRef = useRef<HTMLInputElement>(null)
+  const jsonFileInputRef = useRef<HTMLInputElement>(null);
 
-  const setDarkMode = useTrelloStore((state) => state.setDarkMode)
-  const darkMode = useTrelloStore((state) => state.darkMode)
-  const getState = useTrelloStore((state) => state.getState)
-  const setState = useTrelloStore((state) => state.setState)
-  const isEmpty = useTrelloStore((state) => state.isEmpty)
+  const setDarkMode = useTrelloStore((state) => state.setDarkMode);
+  const darkMode = useTrelloStore((state) => state.darkMode);
+  const getState = useTrelloStore((state) => state.getState);
+  const setState = useTrelloStore((state) => state.setState);
+  const isEmpty = useTrelloStore((state) => state.isEmpty);
 
   const importJson = () => {
-    let files = jsonFileInputRef.current?.files
-    if (!files) return
+    let files = jsonFileInputRef.current?.files;
+    if (!files) return;
 
-    const reader = new FileReader()
+    const reader = new FileReader();
     reader.onload = (event) => {
-      const jsonStr = event.target?.result?.toString()
-      if (!jsonStr) return
+      const jsonStr = event.target?.result?.toString();
+      if (!jsonStr) return;
 
       try {
         const newState: TrelloState | null = jsonStr
           ? JSON.parse(jsonStr)
-          : null
-        if (newState) setState(newState)
+          : null;
+        if (newState) setState(newState);
       } catch {
-        alert("Import Failed: Unsupported import file")
+        alert("Import Failed: Unsupported import file");
       }
-    }
-    reader.readAsText(files[0])
-  }
+    };
+    reader.readAsText(files[0]);
+  };
 
   return (
-    <header className="flex items-center px-4 py-2">
-      <ProjectSelector className="ml-auto" />
-      <h1 className="text-xl text-white font-bold mx-auto drop-shadow-xl">
+    <header className="flex w-full justify-between items-center px-4 py-2">
+      <ProjectSelector className="flex-1" />
+      <h1 className="hidden text-xl text-center text-white font-bold flex-1 drop-shadow-xl md:block">
         {title}
       </h1>
       <Dropdown
-        className="right-6 mt-11 ml-auto"
+        className="mt-11 flex-1"
         trigger={(handleClick) => (
           <Button
             className="ml-auto text-gray-800 dark:text-gray-200"
@@ -62,7 +62,7 @@ function Header({ title }: IProps) {
         <DropdownItem onClick={() => setDarkMode(!darkMode)}>
           {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           <span className="ml-2">
-            Toogle {darkMode ? "light" : "dark"} mode
+            Toggle {darkMode ? "light" : "dark"} mode
           </span>
         </DropdownItem>
         <DropdownItem>
@@ -75,7 +75,7 @@ function Header({ title }: IProps) {
               className="hidden"
               ref={jsonFileInputRef}
               onChange={() => {
-                isEmpty() ? importJson : setShowImportConfirmModal(true)
+                isEmpty() ? importJson : setShowImportConfirmModal(true);
               }}
             />
           </label>
@@ -102,8 +102,8 @@ function Header({ title }: IProps) {
         >
           <Button
             onClick={() => {
-              importJson()
-              setShowImportConfirmModal(false)
+              importJson();
+              setShowImportConfirmModal(false);
             }}
             className="!bg-red-500"
           >
@@ -120,7 +120,7 @@ function Header({ title }: IProps) {
         </Modal>
       )}
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
