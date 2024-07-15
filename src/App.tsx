@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 import clsx from "clsx";
 import useTrelloStore from "./store";
 import { AnimatePresence } from "framer-motion";
-// import { getRandomImage } from "./utils/image";
 
 function App() {
   const [showAddListForm, setShowAddListForm] = useState(false);
@@ -19,11 +18,6 @@ function App() {
   const tasks = useTrelloStore((state) => state.tasks);
   const shiftTask = useTrelloStore((state) => state.shiftTask);
   const darkMode = useTrelloStore((state) => state.darkMode);
-
-  // const randImg = useMemo(
-  //   () => getRandomImage({ seeds: ["wallpaper", "nature", "abstract"] }),
-  //   []
-  // );
 
   const handleTaskDrag = ({ destination, source }: DropResult): void => {
     if (!destination) return;
